@@ -12,6 +12,10 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
+// https://futurestud.io/tutorials/retrofit-2-upgrade-guide-from-1-9
+// https://github.com/metachris/retrofit2-samples/blob/master/src/main/java/HttpApi.java
+
 public class ApiClient {
     private static final Boolean debug = true;
 

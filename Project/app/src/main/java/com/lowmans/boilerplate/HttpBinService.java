@@ -3,29 +3,28 @@ package com.lowmans.boilerplate;
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.ToString;
-import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
+import rx.Observable;
 
 public interface HttpBinService {
     @GET("/get")
-    Call<HttpBinResponse> get();
+    Observable<HttpBinResponse> get();
 
     @GET("/get")
-    Call<HttpBinResponse> getWithArg(@Query("testArg") String arg);
+    Observable<HttpBinResponse> getWithArg(@Query("testArg") String arg);
 
     @FormUrlEncoded
     @POST("/post")
-    Call<HttpBinResponse> postWithFormParams(@Field("field1") String field1);
+    Observable<HttpBinResponse> postWithFormParams(@Field("field1") String field1);
 
     @POST("/post")
-    Call<HttpBinResponse> postWithJson(@Body LoginData loginData);
+    Observable<HttpBinResponse> postWithJson(@Body LoginData loginData);
 
 
     @ToString
