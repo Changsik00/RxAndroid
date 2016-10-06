@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.lowmans.boilerplate.ApiClient;
 import com.lowmans.boilerplate.HttpBinService;
+import com.lowmans.boilerplate.RxBus;
 import com.trello.rxlifecycle.android.ActivityEvent;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
@@ -25,9 +26,17 @@ public class MainActivity extends RxAppCompatActivity {
         ButterKnife.bind(this);
 
         httpBinService = ApiClient.getInstance().getHttpBinService();
+
+        RxBus.getInstance().getTestObserverable()
+                .compose(bindToLifecycle())
+                .subscribe(event -> {
+                    if (event instanceof String) {
+                        Log.i("#@#", "Event : " + event);
+                    }
+                });
     }
 
-    @OnClick({R.id.button1, R.id.button2})
+    @OnClick({R.id.button1, R.id.button2, R.id.button3})
     void buttonOnClick(View view) {
 
         switch (view.getId()) {
@@ -59,6 +68,10 @@ public class MainActivity extends RxAppCompatActivity {
                                 error -> {
                                     Log.i("#@#", "onFailure : " + error);
                                 });
+                break;
+
+            case R.id.button3:
+                RxBus.getInstance().sendTestEvent("Hello EventBus");
                 break;
         }
     }

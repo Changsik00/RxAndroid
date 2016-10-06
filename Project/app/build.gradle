@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'me.tatarka.retrolambda'
 apply plugin: 'android-apt'
-
+apply plugin: 'com.fernandocejas.frodo'
 
 android {
     compileSdkVersion 24
@@ -26,6 +26,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    defaultPublishConfig "debug"
 }
 
 dependencies {

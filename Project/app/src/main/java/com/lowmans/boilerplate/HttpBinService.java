@@ -1,5 +1,7 @@
 package com.lowmans.boilerplate;
 
+import com.fernandocejas.frodo.annotation.RxLogObservable;
+
 import java.util.Map;
 
 import lombok.AllArgsConstructor;
