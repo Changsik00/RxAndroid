@@ -12,6 +12,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -36,7 +37,7 @@ public class MainActivity extends RxAppCompatActivity {
                 });
     }
 
-    @OnClick({R.id.button1, R.id.button2, R.id.button3})
+    @OnClick({R.id.button1, R.id.button2, R.id.button3, R.id.button4})
     void buttonOnClick(View view) {
 
         switch (view.getId()) {
@@ -72,6 +73,12 @@ public class MainActivity extends RxAppCompatActivity {
 
             case R.id.button3:
                 RxBus.getInstance().sendTestEvent("Hello EventBus");
+                break;
+
+            case R.id.button4:
+                Observable.from(new Integer[]{1, 2, 3, 4, 5,}).reduce((i, j) -> i + j).subscribe(result -> {
+                    Log.i("#@#", "total : " + result);
+                });
                 break;
         }
     }
