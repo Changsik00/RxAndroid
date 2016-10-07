@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RetrofitActivity" />
-        <activity android:name=".RxEventbusActivity"></activity>
+        <activity android:name=".RxEventbusActivity" />
+        <activity android:name=".RxBindingActivity"></activity>
     </application>
 
 </manifest>

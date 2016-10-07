@@ -52,7 +52,7 @@ public class MainActivity extends RxAppCompatActivity {
                 break;
 
             case R.id.button3:
-
+                startActivity(new Intent(this, RxBindingActivity.class));
                 break;
 
             case R.id.button4:
