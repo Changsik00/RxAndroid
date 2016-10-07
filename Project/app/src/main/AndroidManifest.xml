@@ -17,7 +17,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RetrofitActivity"></activity>
+        <activity android:name=".RetrofitActivity" />
+        <activity android:name=".RxEventbusActivity"></activity>
     </application>
 
 </manifest>

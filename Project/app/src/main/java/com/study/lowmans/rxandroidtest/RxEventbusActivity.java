@@ -1,6 +1,6 @@
 package com.study.lowmans.rxandroidtest;
 
-import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,13 +9,14 @@ import android.widget.TextView;
 import com.lowmans.boilerplate.RxBus;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
+import org.w3c.dom.Text;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 
-public class MainActivity extends RxAppCompatActivity {
+public class RxEventbusActivity extends RxAppCompatActivity {
 
     @BindView(R.id.textView)
     TextView textView;
@@ -23,7 +24,7 @@ public class MainActivity extends RxAppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_rx_eventbus);
         ButterKnife.bind(this);
 
         eventSubscribe();
@@ -38,28 +39,8 @@ public class MainActivity extends RxAppCompatActivity {
                 });
     }
 
-
-    @OnClick({R.id.button1, R.id.button2, R.id.button3, R.id.button4})
+    @OnClick(R.id.button)
     void buttonOnClick(View view) {
-
-        switch (view.getId()) {
-            case R.id.button1:
-                startActivity(new Intent(this, RetrofitActivity.class));
-                break;
-
-            case R.id.button2:
-                startActivity(new Intent(this, RxEventbusActivity.class));
-                break;
-
-            case R.id.button3:
-
-                break;
-
-            case R.id.button4:
-                Observable.from(new Integer[]{1, 2, 3, 4, 5,}).reduce((i, j) -> i + j).subscribe(result -> {
-                    Log.i("#@#", "total : " + result);
-                });
-                break;
-        }
+        RxBus.getInstance().sendTestEvent("Hello EventBus");
     }
 }
