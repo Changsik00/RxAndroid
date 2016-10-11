@@ -4,11 +4,8 @@ import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.jakewharton.rxbinding.widget.RxTextView;
-import com.jakewharton.rxbinding.widget.TextViewAfterTextChangeEvent;
-import com.jakewharton.rxbinding.widget.TextViewTextChangeEvent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -36,6 +33,7 @@ public class RxBindingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_rx_binding);
         ButterKnife.bind(this);
 
+        // https://realm.io/news/donn-felker-reactive-android-ui-programming-with-rxbinding
         Observable<String> passwordObservable1 = RxTextView.textChanges(pwTextInputEditText1).map(CharSequence::toString);
         Observable<String> passwordObservable2 = RxTextView.textChanges(pwTextInputEditText2).map(CharSequence::toString);
 
